@@ -1,0 +1,1 @@
+### This repo contains example spec based on Open API standards and that can be published to Fortellis
