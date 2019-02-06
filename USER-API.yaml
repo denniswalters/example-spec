@@ -16,6 +16,9 @@ paths:
       summary: health
       description: health
       operationId: health
+      parameters:
+        - $ref: '#/parameters/header.Authorization'
+        - $ref: '#/parameters/header.Subscription-Id'
       produces:
         - application/json
       responses:
@@ -39,6 +42,9 @@ paths:
       summary: Get all users
       description: Get all users
       operationId: getUsers
+      parameters:
+        - $ref: '#/parameters/header.Authorization'
+        - $ref: '#/parameters/header.Subscription-Id'
       produces:
         - application/json
       responses:
@@ -65,6 +71,8 @@ paths:
       description: Get user by Id
       operationId: getUserById
       parameters:
+      - $ref: '#/parameters/header.Authorization'
+      - $ref: '#/parameters/header.Subscription-Id'
       - name: id
         in: path
         required: true
@@ -96,11 +104,13 @@ paths:
       description: Match
       operationId: match
       parameters:
-        - in: body
-          name: userProfile
-          description: User profile to match
-          schema:
-            $ref: '#/definitions/payload'
+      - $ref: '#/parameters/header.Authorization'
+      - $ref: '#/parameters/header.Subscription-Id'
+      - in: body
+        name: userProfile
+        description: User profile to match
+        schema:
+          $ref: '#/definitions/payload'
       produces:
         - application/json
       responses:
@@ -122,6 +132,20 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
 
+
+parameters:
+  header.Authorization:
+    name: Authorization
+    in: header
+    required: true
+    type: string
+    description: Provide authorization to access Fortellis APIs. This must be an OAuth 2.0 token for calling a Fortellis Provider but you may call the simulator platform with basic auth using your API key and secret.
+  header.Subscription-Id:
+    name: Subscription-Id
+    in: header
+    required: true
+    type: string
+    description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test' and your solution's apikey.
 
   
 definitions:
@@ -160,6 +184,12 @@ definitions:
     required:
       - firstname
       - lastname
+    example:
+      firstname: 'John'
+      lastname: 'Doe'
+      orgid: '9999'
+      email: 'john.doe@mail.com'
+      phone: '888-555-4444'
     
 
   # Response
@@ -173,18 +203,27 @@ definitions:
           properties:
             name:
               $ref: '#/definitions/id'
-            entityId:
+            firstname:
               $ref: '#/definitions/firstname'
-            emailDomains: 
+            lastname: 
               $ref: '#/definitions/lastname'
-            address: 
+            dob: 
               $ref: '#/definitions/dob'
             phone: 
               $ref: '#/definitions/phone'
-            website: 
+            email: 
               $ref: '#/definitions/email'
-            geoLocation: 
+            orgId: 
               $ref: '#/definitions/orgId'
+    example:
+      id: '123'
+      firstname: 'John'
+      lastname: 'Doe'
+      dob: '01/01/1999'
+      phone: '888-555-4444'
+      email: 'john.doe@mail.com'
+      orgId: '9999'
+      
 
   # Common
   ErrorResponse:
