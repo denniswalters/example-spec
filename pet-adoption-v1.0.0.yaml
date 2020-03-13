@@ -43,15 +43,15 @@ paths:
       produces:
         - application/json
       responses:
-        200:
+        '200':
           $ref: '#/responses/PetCollection'
-        400:
+        '400':
           $ref: '#/responses/BadRequest'
-        401:
+        '401':
           $ref: '#/responses/Unauthorized'
-        403:
+        '403':
           $ref: '#/responses/Forbidden'
-        503:
+        '503':
           $ref: '#/responses/ServiceUnavailable'
 
     post:
@@ -69,15 +69,15 @@ paths:
       produces:
         - application/json
       responses:
-        200:
+        '200':
           $ref: '#/responses/Pet'
-        400:
+        '400':
           $ref: '#/responses/BadRequest'
-        401:
+        '401':
           $ref: '#/responses/Unauthorized'
-        403:
+        '403':
           $ref: '#/responses/Forbidden'
-        503:
+        '503':
           $ref: '#/responses/ServiceUnavailable'
 
   /pets/{petId}:
@@ -96,17 +96,17 @@ paths:
       produces:
         - application/json
       responses:
-        200:
+        '200':
           $ref: '#/responses/Pet'
-        400:
+        '400':
           $ref: '#/responses/BadRequest'
-        401:
+        '401':
           $ref: '#/responses/Unauthorized'
-        403:
+        '403':
           $ref: '#/responses/Forbidden'
-        404:
+        '404':
           $ref: '#/responses/NotFound'
-        503:
+        '503':
           $ref: '#/responses/ServiceUnavailable'
 
     post:
@@ -125,19 +125,19 @@ paths:
       produces:
         - application/json
       responses:
-        200:
+        '200':
           $ref: '#/responses/Pet'
-        400:
+        '400':
           $ref: '#/responses/BadRequest'
-        401:
+        '401':
           $ref: '#/responses/Unauthorized'
-        403:
+        '403':
           $ref: '#/responses/Forbidden'
-        404:
+        '404':
           $ref: '#/responses/NotFound'
-        423:
+        '423':
           $ref: '#/responses/Locked'
-        503:
+        '503':
           $ref: '#/responses/ServiceUnavailable'
 
     delete:
@@ -155,19 +155,19 @@ paths:
       produces:
         - application/json
       responses:
-        204:
+        '204':
           $ref: '#/responses/Deleted'
-        400:
+        '400':
           $ref: '#/responses/BadRequest'
-        401:
+        '401':
           $ref: '#/responses/Unauthorized'
-        403:
+        '403':
           $ref: '#/responses/Forbidden'
-        404:
+        '404':
           $ref: '#/responses/NotFound'
-        423:
+        '423':
           $ref: '#/responses/Locked'
-        503:
+        '503':
           $ref: '#/responses/ServiceUnavailable'
 
 parameters:
